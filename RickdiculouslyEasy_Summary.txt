@@ -1,0 +1,116 @@
+RickdiculouslyEasy – Security Assessment Summary
+================================================
+
+Overview
+--------
+This project documents a full attack chain performed against the "RickdiculouslyEasy" vulnerable virtual machine. 
+The objective of the assessment was to identify security weaknesses, demonstrate realistic exploitation paths, and 
+achieve full system compromise by chaining multiple low- to high-impact vulnerabilities.
+
+This engagement focuses on methodology, root cause analysis, and impact, rather than tool-centric exploitation.
+
+
+Attack Chain Summary
+--------------------
+
+1. Initial Access – OS Command Injection
+A CGI-based web endpoint was found to be vulnerable to OS command injection due to improper input validation. 
+This vulnerability allowed arbitrary command execution, which was used to enumerate system users by accessing 
+system-level files.
+
+Impact:
+- Disclosure of valid local usernames
+- Establishment of a reliable initial foothold
+
+
+2. Information Disclosure – Exposed Web Resources
+Multiple sensitive files were accessible through web-exposed directories without authentication. 
+These resources contained plaintext credentials and challenge secrets.
+
+Impact:
+- Credential disclosure
+- Increased attack surface through credential reuse
+
+
+3. Authenticated Access – SSH (User-Level)
+Using disclosed credentials, authenticated SSH access was obtained as a standard user. 
+This access enabled local enumeration and post-exploitation activities.
+
+Impact:
+- Remote authenticated access
+- Transition from external to internal attacker perspective
+
+
+4. Post-Exploitation – Sensitive File Discovery
+User-owned files were discovered containing sensitive information and secrets relevant to protected resources.
+These files provided additional clues that enabled further access escalation.
+
+Impact:
+- Internal data exposure
+- Credential-related information disclosure
+
+
+5. Local Binary Execution – Secret Decryption
+A user-accessible executable binary was identified that decrypted protected data when supplied with a recovered secret.
+This resulted in the disclosure of password hints for a higher-privileged account.
+
+Impact:
+- Disclosure of protected secrets
+- Facilitation of further credential compromise
+
+
+6. Credential Derivation – Weak Password Policy
+Recovered password hints revealed a predictable password pattern. 
+A small, targeted password list was generated based on these constraints and successfully used to authenticate 
+as a higher-privileged user.
+
+Impact:
+- Compromise of privileged user account
+- Demonstration of weak password policy enforcement
+
+
+7. Privilege Escalation – Sudo Misconfiguration
+The compromised privileged user was permitted to execute all commands with sudo without restriction.
+This misconfiguration enabled immediate escalation to full administrative (root) access.
+
+Impact:
+- Complete system compromise
+- Loss of confidentiality, integrity, and availability
+
+
+8. Post-Exploitation – Root-Level Data Access
+After escalating privileges, sensitive files located in root-owned directories were accessed, confirming 
+full control over the target system.
+
+Impact:
+- Total system compromise
+- Unrestricted access to sensitive root-level data
+
+
+Root Causes Identified
+----------------------
+- Improper input validation (OS command injection)
+- Insecure exposure of sensitive web resources
+- Plaintext credential storage
+- Weak and predictable password policies
+- Credential reuse across services
+- Misconfigured sudo permissions
+
+
+Final Impact
+------------
+By chaining multiple vulnerabilities, full administrative access to the system was achieved.
+While several issues were individually moderate in severity, their combination resulted in a critical security failure.
+
+
+Conclusion
+----------
+This assessment highlights how common configuration errors, weak credential management, and insufficient access controls 
+can be combined to compromise an entire system. The vulnerabilities identified in this project reflect realistic issues 
+frequently observed in real-world environments.
+
+
+Disclaimer
+----------
+This project was conducted in a controlled lab environment for educational and portfolio purposes only.
+No unauthorized testing was performed against real-world systems.

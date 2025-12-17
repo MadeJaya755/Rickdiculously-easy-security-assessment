@@ -1,0 +1,169 @@
+# Nmap 7.95 scan initiated Wed Dec 17 07:13:59 2025 as: /usr/lib/nmap/nmap --privileged -p- -sC -sV -oN rick_nmap.txt 192.168.56.108
+Nmap scan report for 192.168.56.108 (192.168.56.108)
+Host is up (0.0030s latency).
+Not shown: 65528 filtered tcp ports (no-response)
+PORT      STATE SERVICE VERSION
+21/tcp    open  ftp     vsftpd 3.0.3
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:192.168.56.1
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| -rw-r--r--    1 0        0              42 Aug 22  2017 FLAG.txt
+|_drwxr-xr-x    2 0        0               6 Feb 12  2017 pub
+22/tcp    open  ssh?
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LDAPSearchReq, LPDString, NULL, RPCCheck, RTSPRequest, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServerCookie, X11Probe: 
+|_    Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.4.0-31-generic x86_64)
+80/tcp    open  http    Apache httpd 2.4.27 ((Fedora))
+|_http-title: Morty's Website
+|_http-server-header: Apache/2.4.27 (Fedora)
+| http-methods: 
+|_  Potentially risky methods: TRACE
+9090/tcp  open  http    Cockpit web service 161 or earlier
+|_http-title: Did not follow redirect to https://192.168.56.108:9090/
+13337/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, JavaRMI, Kerberos, LANDesk-RC, LDAPBindReq, LDAPSearchReq, LPDString, NCP, NULL, NotesRPC, RPCCheck, RTSPRequest, SIPOptions, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServer, TerminalServerCookie, WMSRequest, X11Probe, afp, giop, ms-sql-s, oracle-tns: 
+|_    FLAG:{TheyFoundMyBackDoorMorty}-10Points
+22222/tcp open  ssh     OpenSSH 7.5 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 b4:11:56:7f:c0:36:96:7c:d0:99:dd:53:95:22:97:4f (RSA)
+|   256 20:67:ed:d9:39:88:f9:ed:0d:af:8c:8e:8a:45:6e:0e (ECDSA)
+|_  256 a6:84:fa:0f:df:e0:dc:e2:9a:2d:e7:13:3c:e7:50:a9 (ED25519)
+60000/tcp open  unknown
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, NULL, RPCCheck, drda, ibm-db2: 
+|     Welcome to Ricks half baked reverse shell...
+|   GenericLines: 
+|     Welcome to Ricks half baked reverse shell...
+|     command not found 
+|     command not found
+|   GetRequest: 
+|     Welcome to Ricks half baked reverse shell...
+|     HTTP/1.0
+|     command not found 
+|     command not found
+|   HTTPOptions: 
+|     Welcome to Ricks half baked reverse shell...
+|     OPTIONS / HTTP/1.0
+|     command not found 
+|     command not found
+|   Help: 
+|     Welcome to Ricks half baked reverse shell...
+|     HELP
+|     command not found
+|   Kerberos, SSLSessionReq, TLSSessionReq, TerminalServerCookie: 
+|     Welcome to Ricks half baked reverse shell...
+|     command not found
+|   RTSPRequest: 
+|     Welcome to Ricks half baked reverse shell...
+|     OPTIONS / RTSP/1.0
+|     command not found 
+|_    command not found
+3 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port22-TCP:V=7.95%I=7%D=12/17%Time=69429EF6%P=x86_64-pc-linux-gnu%r(NUL
+SF:L,42,"Welcome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.
+SF:4\.0-31-generic\x20x86_64\)\n")%r(GenericLines,42,"Welcome\x20to\x20Ubu
+SF:ntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generic\x20x86_64\
+SF:)\n")%r(GetRequest,42,"Welcome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\
+SF:(GNU/Linux\x204\.4\.0-31-generic\x20x86_64\)\n")%r(HTTPOptions,42,"Welc
+SF:ome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-ge
+SF:neric\x20x86_64\)\n")%r(RTSPRequest,42,"Welcome\x20to\x20Ubuntu\x2014\.
+SF:04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generic\x20x86_64\)\n")%r(RPC
+SF:Check,42,"Welcome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x2
+SF:04\.4\.0-31-generic\x20x86_64\)\n")%r(DNSVersionBindReqTCP,42,"Welcome\
+SF:x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generi
+SF:c\x20x86_64\)\n")%r(DNSStatusRequestTCP,42,"Welcome\x20to\x20Ubuntu\x20
+SF:14\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generic\x20x86_64\)\n")%r
+SF:(Help,42,"Welcome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x2
+SF:04\.4\.0-31-generic\x20x86_64\)\n")%r(SSLSessionReq,42,"Welcome\x20to\x
+SF:20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generic\x20x8
+SF:6_64\)\n")%r(TerminalServerCookie,42,"Welcome\x20to\x20Ubuntu\x2014\.04
+SF:\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generic\x20x86_64\)\n")%r(TLSSe
+SF:ssionReq,42,"Welcome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux
+SF:\x204\.4\.0-31-generic\x20x86_64\)\n")%r(Kerberos,42,"Welcome\x20to\x20
+SF:Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generic\x20x86_
+SF:64\)\n")%r(SMBProgNeg,42,"Welcome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x
+SF:20\(GNU/Linux\x204\.4\.0-31-generic\x20x86_64\)\n")%r(X11Probe,42,"Welc
+SF:ome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-ge
+SF:neric\x20x86_64\)\n")%r(FourOhFourRequest,42,"Welcome\x20to\x20Ubuntu\x
+SF:2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generic\x20x86_64\)\n")
+SF:%r(LPDString,42,"Welcome\x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/L
+SF:inux\x204\.4\.0-31-generic\x20x86_64\)\n")%r(LDAPSearchReq,42,"Welcome\
+SF:x20to\x20Ubuntu\x2014\.04\.5\x20LTS\x20\(GNU/Linux\x204\.4\.0-31-generi
+SF:c\x20x86_64\)\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port13337-TCP:V=7.95%I=7%D=12/17%Time=69429EF6%P=x86_64-pc-linux-gnu%r(
+SF:NULL,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(GenericLines,29
+SF:,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(GetRequest,29,"FLAG:{T
+SF:heyFoundMyBackDoorMorty}-10Points\n")%r(HTTPOptions,29,"FLAG:{TheyFound
+SF:MyBackDoorMorty}-10Points\n")%r(RTSPRequest,29,"FLAG:{TheyFoundMyBackDo
+SF:orMorty}-10Points\n")%r(RPCCheck,29,"FLAG:{TheyFoundMyBackDoorMorty}-10
+SF:Points\n")%r(DNSVersionBindReqTCP,29,"FLAG:{TheyFoundMyBackDoorMorty}-1
+SF:0Points\n")%r(DNSStatusRequestTCP,29,"FLAG:{TheyFoundMyBackDoorMorty}-1
+SF:0Points\n")%r(Help,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(S
+SF:SLSessionReq,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(Termina
+SF:lServerCookie,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(TLSSes
+SF:sionReq,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(Kerberos,29,
+SF:"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(SMBProgNeg,29,"FLAG:{Th
+SF:eyFoundMyBackDoorMorty}-10Points\n")%r(X11Probe,29,"FLAG:{TheyFoundMyBa
+SF:ckDoorMorty}-10Points\n")%r(FourOhFourRequest,29,"FLAG:{TheyFoundMyBack
+SF:DoorMorty}-10Points\n")%r(LPDString,29,"FLAG:{TheyFoundMyBackDoorMorty}
+SF:-10Points\n")%r(LDAPSearchReq,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Poi
+SF:nts\n")%r(LDAPBindReq,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%
+SF:r(SIPOptions,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(LANDesk
+SF:-RC,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(TerminalServer,2
+SF:9,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(NCP,29,"FLAG:{TheyFou
+SF:ndMyBackDoorMorty}-10Points\n")%r(NotesRPC,29,"FLAG:{TheyFoundMyBackDoo
+SF:rMorty}-10Points\n")%r(JavaRMI,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Po
+SF:ints\n")%r(WMSRequest,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%
+SF:r(oracle-tns,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(ms-sql-
+SF:s,29,"FLAG:{TheyFoundMyBackDoorMorty}-10Points\n")%r(afp,29,"FLAG:{They
+SF:FoundMyBackDoorMorty}-10Points\n")%r(giop,29,"FLAG:{TheyFoundMyBackDoor
+SF:Morty}-10Points\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port60000-TCP:V=7.95%I=7%D=12/17%Time=69429EFC%P=x86_64-pc-linux-gnu%r(
+SF:NULL,2F,"Welcome\x20to\x20Ricks\x20half\x20baked\x20reverse\x20shell\.\
+SF:.\.\n#\x20")%r(ibm-db2,2F,"Welcome\x20to\x20Ricks\x20half\x20baked\x20r
+SF:everse\x20shell\.\.\.\n#\x20")%r(drda,2F,"Welcome\x20to\x20Ricks\x20hal
+SF:f\x20baked\x20reverse\x20shell\.\.\.\n#\x20")%r(GenericLines,5F,"Welcom
+SF:e\x20to\x20Ricks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20\r:\x
+SF:20command\x20not\x20found\x20\n#\x20\r:\x20command\x20not\x20found\x20\
+SF:n#\x20")%r(GetRequest,6D,"Welcome\x20to\x20Ricks\x20half\x20baked\x20re
+SF:verse\x20shell\.\.\.\n#\x20GET\x20/\x20HTTP/1\.0\r:\x20command\x20not\x
+SF:20found\x20\n#\x20\r:\x20command\x20not\x20found\x20\n#\x20")%r(HTTPOpt
+SF:ions,71,"Welcome\x20to\x20Ricks\x20half\x20baked\x20reverse\x20shell\.\
+SF:.\.\n#\x20OPTIONS\x20/\x20HTTP/1\.0\r:\x20command\x20not\x20found\x20\n
+SF:#\x20\r:\x20command\x20not\x20found\x20\n#\x20")%r(RTSPRequest,71,"Welc
+SF:ome\x20to\x20Ricks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20OPT
+SF:IONS\x20/\x20RTSP/1\.0\r:\x20command\x20not\x20found\x20\n#\x20\r:\x20c
+SF:ommand\x20not\x20found\x20\n#\x20")%r(RPCCheck,2F,"Welcome\x20to\x20Ric
+SF:ks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20")%r(DNSVersionBind
+SF:ReqTCP,2F,"Welcome\x20to\x20Ricks\x20half\x20baked\x20reverse\x20shell\
+SF:.\.\.\n#\x20")%r(DNSStatusRequestTCP,2F,"Welcome\x20to\x20Ricks\x20half
+SF:\x20baked\x20reverse\x20shell\.\.\.\n#\x20")%r(Help,4B,"Welcome\x20to\x
+SF:20Ricks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20HELP\r:\x20com
+SF:mand\x20not\x20found\x20\n#\x20")%r(SSLSessionReq,48,"Welcome\x20to\x20
+SF:Ricks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20\x16\x03:\x20com
+SF:mand\x20not\x20found\x20\n#\x20")%r(TerminalServerCookie,47,"Welcome\x2
+SF:0to\x20Ricks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20\x03:\x20
+SF:command\x20not\x20found\x20\n#\x20")%r(TLSSessionReq,48,"Welcome\x20to\
+SF:x20Ricks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20\x16\x03:\x20
+SF:command\x20not\x20found\x20\n#\x20")%r(Kerberos,46,"Welcome\x20to\x20Ri
+SF:cks\x20half\x20baked\x20reverse\x20shell\.\.\.\n#\x20:\x20command\x20no
+SF:t\x20found\x20\n#\x20");
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Dec 17 07:19:54 2025 -- 1 IP address (1 host up) scanned in 355.49 seconds
